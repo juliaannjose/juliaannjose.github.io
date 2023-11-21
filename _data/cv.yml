@@ -1,97 +1,136 @@
-- title: General Information
-  type: map
-  contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
-
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+    - title: PhD in Computer Science
+      institution: New York University
+      year: 2022 - Now
+    - title: MS in Computer Science
+      institution: Arizona State University
+      year: 2021
+    - title: BTech in Electronics and Communication Engineering
+      institution: National Institute of Technology Delhi
+      year: 2019
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Graduate Teaching Assistant
+      institution: New York University
+      year: 2023
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Assisted with and reviewed research proposals for the course Privacy in the Electronic Society
+
+    - title: Data Scientist
+      institution: Atos zData
+      year: 2020-2022
       description:
-        - Description 1.
-        - Description 2.
+        - MLOps- As part of my MLOps work, I containerized applications & deployed them using GCP services & on Kubernetes clusters. Also used KServe (for model inferencing), MLflow (model experimentation and tracking), and Kubeflow pipelines for managing ML workflows. 
+        - Entity Extraction- Used a multi-modal deep learning based architecture to extract data from unstructured pdfs.
+        - Constrained Optimization- worked on a constrained optimization problem using mixed integer programming. 
+        - Retail Video Analytics- Transfer learned a Faster R-CNN based model for object detection. Implemented a deep learning based tracker. 
+        - Conversational AI Chatbot- Built a chatbot using Rasa Machine Learning Framework and other external APIs (Google Maps API).
+        - PII Detection- Developed a Personally Identifiable Information Detection model by fine-tuning a pre-trained model for custom named entity recognition task. The application can be used to detect & mask sensitive data in text files, including files on GCP buckets. I used Apigee for API management and testing.
+        - Worked on a scheduling algorithm that matches members with medical service providers within various radii. I used multiprocessing which saved the firm 40 hours of execution time. I managed GCP compute instances, used cloud SQL for PostgreSQL, and used Plotly and Dash framework for developing an interactive web application.
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
+    - title: Graduate Teaching Assistant
+      institution: Arizona State University
+      year: 2019-2020
+      description: 
+      - I worked as a Graduate Teaching Assistant for the course Principles of International Business at W. P. Carey School of Business.
+      - As part of my work at the Behavioral Research Lab, I worked on an algorithm that categorized open-ended survey responses into two categories using NLP algorithms for topic extraction.
 
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
+    - title: Research Intern - Software Engineering
+      institution: Qatar Computing Research Institute
+      year: 2019-2020
+      description: 
+      - Worked on developing a new dimensionality reduction technique using tree-indexing.
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+    - title: Research Intern - Software Engineering
+      institution: Qatar Computing Research Institute
+      year: 2018 - 2018
+      description: 
+      - Developed a Multi-Lingual Information Retrieval System that retrieves Wikipedia Articles across languages (French, Arabic and English).
+      - Used pre-trained Arabic, French and English word embeddings on monolingual vector spaces.
+      - Aligned these monolingual vector spaces using Orthogonal Procrustes Alignment Technique to get a multilingual vector space.
+      - Used t-SNE technique for dimensionality reduction and Bokeh for visualization purposes.
 
-- title: Open Source Projects
+    - title: Research Intern - Software Engineering
+      institution: Qatar Computing Research Institute
+      year: 2017 - 2017
+      description: 
+      - Analyzed different data sets to understand urban dynamics in fast-growing cities. Worked on a platform for integrating data from disparate physical and social sensors and implemented analytical approaches to mine such data and developed two applications as a result -- One, that visualizes various social demographics of Qatar and the other, an application called QEvents which visualizes various events happening in Qatar through a map-centered dashboard.  
+
+
+- title: Academic Projects & Research
   type: time_table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: PhD Research
+      year: 2022 - Now
+      description:
+      - Currently looking at using scalable LLMs to counter propaganda and disinformation online with a focus on analyzing linguistic techniques
+      - Research on detecting AI-generated content
+      - User Research using Quantitative Methods
+      - Fast Semantic Search using high dimensional vectors, Hadoop, Spark, and Milvus (a scalable vector database)
+
+    - title: MS Research
+      year: 2019 - 2021
+      description:
+      - Continuous Glucose Monitoring & Prediction- Feature engineering of CGM time-series data. Train SVM and K-NN model to understand meal intake pattern. Forecasting of hypoglycemic events using RNN LSTM.
+      - Botnet detection on social media- CoorNet algorithm to detect coordinated inauthentic behavior.
+      - Pattern recognition- bayesian decision theory based classification use cases.
+
+    - title: Undergraduate Research
+      year: 2015 - 2019
+      description:
+      - Project 1 - Built a face authenticated and voice-controlled robot that detects objects, and recognizes emotions from facial expressions using deep learning algorithms and models, on Raspberry Pi.
+      - Project 2 -  Developed a Sign Language Recognition System (using two approaches — sensor-based and image-based)
+      - The sensor-based approach involves a glove that converts sign to speech using sensors such as flex sensors, contact sensors, accelerometers and gyroscopes, etc.
+      - The image-based approach was implemented with the help of Machine Learning and Computer Vision algorithms.
+
 
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 1921
+    - year: 2023
       items: 
-        - Nobel Prize in Physics 
-        - Matteucci Medal
-    - year: 2029
+        - GREPSEC VI Grant Recipient
+        - USENIX Security '23 Student Grant Recipient
+    - year: 2022
       items: 
-        - Max Planck Medal
+        - NYU School of Engineering Fellowship
 
-- title: Academic Interests
-  type: nested_list
+- title: Certifications
+  type: time_table
   contents:
-    - title: Topic 1.
+    - year: 2022
       items: 
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
+        - Machine Learning Engineering for Production (MLOps)
+    - year: 2021
+      items: 
+        - Rasa Developer Certification
+    - year: 2020
+      items: 
+        - AWS Fundamentals- Addressing Security Risk
+    - year: 2020
+      items: 
+        - AWS Fundamentals- Going Cloud-Native
+    - year: 2018
+      items: 
+        - Huawei Certified Network Associate
 
-- title: Other Interests
-  type: list
+- title: Activities
+  type: time_table
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - year: 2022
+      items: 
+        - Member of AI Ethics Committee - Atos zData
+    - year: 2016-2018
+      items: 
+        - Under-Secretary-General, Executive Board Affairs - NITD Model United Nations
+    - year: 2016
+      items: 
+        - Human Rights Delegate - BITSMUN
+    - year: 2014
+      items: 
+        - Student Volunteer - TEDxBirlaPublicSchool
+
