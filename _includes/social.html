@@ -1,6 +1,6 @@
-            {%- if site.email -%}
+            <!-- {%- if site.email -%}
             <a href="mailto:{{ site.email | encode_email }}" title="email"><i class="fas fa-envelope"></i></a>
-            {% endif %}
+            {% endif %} -->
             {%- if site.telegram_username -%}
             <a href="https://telegram.me/{{ site.telegram_username }}" title="telegram"><i class="fab fa-telegram"></i></a>
             {% endif %}
@@ -106,9 +106,9 @@
             {%- if site.zotero_username -%}
             <a href="https://www.zotero.org/{{ site.zotero_username }}" title="Zotero"><i class="ai ai-zotero"></i></a>
             {% endif %}
-            {%- if site.rss_icon -%}
+            <!-- {%- if site.rss_icon -%}
             <a href="{{ site.baseurl }}/feed.xml" title="RSS Feed"><i class="fas fa-rss-square"></i></a>
-            {% endif %}
+            {% endif %} -->
             {%- if site.wechat_qr -%}
             <a id="WeChatBtn" title="WeChat"><i class="fab fa-weixin"></i></a>
             <div id="WeChatMod" class="wechat-modal">
