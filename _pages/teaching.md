@@ -2,11 +2,37 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Materials for courses you taught. Replace this text with your description.
+description: 
 nav: true
 nav_order: 5
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
+SPRING 2023
+- Privacy in the Electronic Society, New York University
+    - Graduate Teaching Assistant for CSGY 9223, under Professor Rachel Greenstadt
+    - Assist with graduate-level research projects 
+    - Grading research proposals and papers
 
-Organize your courses by years, topics, or universities, however you like!
+SPRING 2020
+- Negotiations, Arizona State University
+    - Graduate Teaching Assistant for MGT 430, under Professor Julia LaRosa
+    Prepare the class for negotiation role-play activities
+    - Monitor role-plays and provide improvement suggestions
+    - Grade negotiation debrief documents and exams
+    - Hold office hours
+    - Monitor and grade YellowDig Discussion Board Activities
+
+
+FALL 2019
+- Principles of International Business, Arizona State University
+    - Graduate Teaching Assistant for MGT 302, under Professor Julia LaRosa
+    - Set questions for exams
+    - Proctor and grade exams
+    - Hold office hours
+    - Monitor and grade YellowDig Discussion Board Activities
+
+FALL 2019 - SPRING 2020
+- Behavioral Research Lab, Arizona State University
+    - Laboratory Assistant for Behavioral Research Lab, Department of Management and Entrepreneurship, under Professor Edward Wellman
+    - Conduct lab studies
+    - Developed an algorithm that categorizes open-ended survey responses
