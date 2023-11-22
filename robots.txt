@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://juliaannjose.github.io/home/sitemap.xml
+Sitemap: https://juliaannjose.github.io/sitemap.xml
