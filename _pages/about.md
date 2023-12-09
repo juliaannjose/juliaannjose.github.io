@@ -27,5 +27,5 @@ I have a master’s degree in computer science from Arizona State University and
 
 During the early part of my career, I worked as a Research and Development Intern for [Qatar Computing Research Institute](https://www.hbku.edu.qa/en/qcri/about). I rotated within three of their departments -- Arabic Language Technologies, Social Computing, and Visualization.
 
-Outside of my ongoing academic research, I'm currently reading about the [language-cognition relationship](https://www.bu.edu/psych/charris/papers/Encyclopedia.pdf), especially along the [connectionism](https://seop.illc.uva.nl/entries/connectionism/) perspective. 
+Outside of my ongoing academic research, I'm currently reading about the [language-cognition relationship](https://www.bu.edu/psych/charris/papers/Encyclopedia.pdf), specifically along the [connectionism](https://seop.illc.uva.nl/entries/connectionism/) perspective. 
 
