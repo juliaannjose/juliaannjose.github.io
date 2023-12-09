@@ -1,4 +1,4 @@
-<!-- ---
+---
 layout: page
 title: project 6
 description: Analysis of Continous Glucose Monitor (CGM) Data
@@ -21,4 +21,4 @@ Part 1: Feature engineering of CGM time-series data.
 
 Part 2: Train SVM and K-NN model to understand meal intake.
 
-Part 3: Perform K-means and DBSCAN clustering algorithms to get deeper insights into the amount of meal consumed.  -->
+Part 3: Perform K-means and DBSCAN clustering algorithms to get deeper insights into the amount of meal consumed. 
