@@ -3,7 +3,7 @@ layout: page
 title: project 6
 description: Analysis of Continous Glucose Monitor (CGM) Data
 img: assets/img/9.jpg
-importance: 4
+importance: 6
 category: work
 ---
 
@@ -14,7 +14,7 @@ category: work
     </div>
 </div>
 <div class="caption">
-    Word Clouds corresponding to real versus fake news
+    CGM Times Series
 </div>
 
 Part 1: Feature engineering of CGM time-series data. 

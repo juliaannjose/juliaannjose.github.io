@@ -3,7 +3,7 @@ layout: page
 title: project 5
 description: Fighting the Covid-19 infodemic
 img: assets/img/7.jpg
-importance: 4
+importance: 5
 category: work
 ---
 
