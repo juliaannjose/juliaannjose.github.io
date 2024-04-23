@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Presented my research at Columbia University and at NYU AI Research Symposium
+Presented my research at Columbia University and NYU AI Research Symposium
