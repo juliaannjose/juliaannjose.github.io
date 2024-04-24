@@ -1,4 +1,184 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://juliaannjose.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://juliaannjose.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2024-04-24T01:12:52+00:00</updated><id>https://juliaannjose.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">Multi-Layer Perceptron</title><link href="https://juliaannjose.github.io/blog/2020/mlp/" rel="alternate" type="text/html" title="Multi-Layer Perceptron"/><published>2020-12-20T00:00:00+00:00</published><updated>2020-12-20T00:00:00+00:00</updated><id>https://juliaannjose.github.io/blog/2020/mlp</id><content type="html" xml:base="https://juliaannjose.github.io/blog/2020/mlp/"><![CDATA[<p>This guide will help you build a 3 layer Neural Network from scratch i.e without the use of any existing python libraries.</p> <p>A Neural Network generally takes the form:</p> <ol> <li> <p>Input Layer</p> </li> <li> <p>Hidden Layer(s)</p> </li> <li> <p>Output Layer</p> </li> </ol> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/mlp-480.webp"/> <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/mlp-800.webp"/> <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/mlp-1400.webp"/> <img src="/assets/img/mlp.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> </div> <p>For this tutorial we will implement a 3 layer NN with 2-\(n_h\)-1 architecture where \(n_h\) stands for the number of hidden nodes.</p> <p>Some specifications:</p> <ul> <li> <p>Activation function used: Sigmoid</p> </li> <li> <p>Learning Rate: 0.005</p> </li> <li> <p>Number of hidden nodes, \(n_h\) = 2,4,6,8,10</p> </li> <li> <p>Error: Mean Squared Error</p> </li> </ul> <p><strong>Step 1:</strong> Load the given train and test datasets.</p> <p><strong>Step 2:</strong> Feature normalize your train and test datasets:</p> <p>For each feature \(x_i\) , your normalized feature \(y_i\) will be:</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">yi</span> <span class="o">=</span> <span class="p">(</span><span class="n">xi</span> <span class="o">-</span> <span class="n">mi</span><span class="p">)</span><span class="o">/</span><span class="n">si</span>      
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://juliaannjose.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://juliaannjose.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2024-04-24T01:37:47+00:00</updated><id>https://juliaannjose.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">Fine-tuning LlaMa 2</title><link href="https://juliaannjose.github.io/blog/2024/ftllama/" rel="alternate" type="text/html" title="Fine-tuning LlaMa 2"/><published>2024-04-01T00:00:00+00:00</published><updated>2024-04-01T00:00:00+00:00</updated><id>https://juliaannjose.github.io/blog/2024/ftllama</id><content type="html" xml:base="https://juliaannjose.github.io/blog/2024/ftllama/"><![CDATA[<p>Meta LlaMa 2 is an open-source large language model trained on publicly available data on the internet.</p> <p>Parameter Size: 7 billion to 70 billion.</p> <p>Architecture: Transformer architecture with certain modifications on context length, use of grouped-query attention, rotary positional embeddings, and so on. (Refer to <a href="https://ai.meta.com/research/publications/llama-2-open-foundation-and-fine-tuned-chat-models/">this paper</a> for training details).</p> <p>While a full fine-tune LlaMa 2 is possible, this guide will use concepts such as <a href="https://huggingface.co/docs/peft/en/index">PEFT (Parameter Efficient Fine-Tuning)</a> and <a href="https://arxiv.org/abs/2106.09685">LoRA</a> to more efficeintly fine-tune LlaMa 2. These approaches consider trade-offs in cost and computational resources, aiming to achieve optimal performance with reduced resource requirements.</p> <p>Before we get started, you will need a GPU node to fine-tune LlaMa 2. You can use <a href="brev.dev">brev.dev</a> to get GPU nodes. The code in this guide was developed using 1 NVIDIA A100 80GB GPU on the NYU HPC Cluster. But you can use any GPU type (RTX8000, V100, A10,..) with &gt;= 28 GB memory.</p> <h3 id="dataset">Dataset</h3> <p>The code in this guide uses the <a href="https://github.com/Fraser-Greenlee/datasets/tree/ec34f7bbad7f4c05fc4df1f6216f1b76f596b8ec/datasets/sem_eval_2020_task_11">Propaganda Techniques Corpus (PTC) dataset</a> to fine-tune LlaMa 2 to detect propaganda techniques in news articles. PTC contains phrase-level annotations of propaganda techniques (eg, name-calling, loaded language, flag-waving, etc) in news articles.</p> <p>Download PTC from <a href="https://github.com/davideturco/SemEval2020-Task11/tree/main/datasets">here</a>.</p> <p>We need a pandas dataframe object with each row representing a news article and the corresponding phrase-technique instances in it. For the scope of this guide, we will focus on one technique at a time (this code can be modified to work with multiple technqiues (multi-label multi-class classification setting)).</p> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/ptc_df-480.webp"/> <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/ptc_df-800.webp"/> <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/ptc_df-1400.webp"/> <img src="/assets/img/ptc_df.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> </div> <p>Next, we will turn this pandas dataframe into a <a href="https://huggingface.co/docs/datasets/v1.2.0/loading_datasets.html">huggingface dataset.Dataset</a> object.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>finetune_train_dataset = Dataset.from_pandas(train_df)
+finetune_dev_dataset = Dataset.from_pandas(dev_df)
+</code></pre></div></div> <h3 id="model">Model</h3> <p>Next up, we load the model (with 4-bit quanitzation) using BitsAndBytes.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from accelerate import FullyShardedDataParallelPlugin, Accelerator
+
+base_model_id = "meta-llama/Llama-2-7b-hf"
+
+quant_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch.bfloat16, # torch.bfloat16 if A100, use getattr(torch, "float16") for RTX8000 or V100
+    bnb_4bit_use_double_quant=True,
+)
+
+model = AutoModelForCausalLM.from_pretrained(base_model_id, quantization_config=quant_config,device_map={"": Accelerator().local_process_index}) 
+</code></pre></div></div> <p>Load tokenizer with left padding to get our training data points to be of the same length.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tokenizer = AutoTokenizer.from_pretrained(
+    base_model_id,
+    padding_side="left",
+    add_eos_token=True,  
+    add_bos_token=True,  
+)
+tokenizer.pad_token = tokenizer.eos_token
+</code></pre></div></div> <p>Let’s use the following function to add padding (max length should be determined based on your dataset’s length).</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>max_length = 10000
+
+def tokenize(prompt):
+    result = tokenizer(
+        prompt,
+        truncation=True,
+        max_length=max_length,
+        padding="max_length",
+    )
+    result["labels"] = result["input_ids"].copy()
+    return result
+</code></pre></div></div> <p>We will frame the entity recognition problem using the following prompt template.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def generate_and_tokenize_prompt(data_point):
+    full_prompt =f"""I want you to perform a data annotation task. In your output, I want you to return a json dictionary with key as phrase and value as technique, depending on whether you think the phrases in the following text uses name-callling. 
+A phrase is "name-calling" if you perceive that it is "Labeling the object of the propaganda campaign as either something the target audience fears, hates, finds undesirable or otherwise loves or praises". 
+I want you to respond with a json dictionary strictly having the detected phrases as keys and technique (Name-Calling) as value.
+
+### Text:
+{data_point["text"]}
+
+### Output:
+{data_point["target"]}
+"""
+    return tokenize(full_prompt)
+</code></pre></div></div> <p>Let’s obtain the tokenized dataset.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tokenized_train_dataset = finetune_train_dataset.map(generate_and_tokenize_prompt)
+tokenized_val_dataset = finetune_dev_dataset.map(generate_and_tokenize_prompt)
+</code></pre></div></div> <h3 id="fine-tuning-the-model-using-lora">Fine-tuning the model using LoRA</h3> <p>The following code will process the quantized model for training.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from peft import prepare_model_for_kbit_training
+
+model.gradient_checkpointing_enable()
+model = prepare_model_for_kbit_training(model)
+</code></pre></div></div> <p>Next up, we define our QLoRA configuration. The values were selected using <a href="https://github.com/OpenAccess-AI-Collective/axolotl/blob/main/examples/openllama-3b/qlora.yml">this example</a> as reference.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from peft import LoraConfig, get_peft_model
+
+config = LoraConfig(
+    r=8,
+    lora_alpha=32,
+    target_modules=[ # the linear layers that are now trainable
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj",
+        "lm_head",
+    ],
+    bias="none",
+    lora_dropout=0.05,  # Conventional
+    task_type="CAUSAL_LM",
+)
+
+model = get_peft_model(model, config)
+</code></pre></div></div> <p>OPTIONAL: (Use <a href="https://huggingface.co/docs/accelerate/en/usage_guides/fsdp">Fully Sharded Data Parallel</a> to make training large models faster).</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from accelerate import FullyShardedDataParallelPlugin, Accelerator
+from torch.distributed.fsdp.fully_sharded_data_parallel import FullOptimStateDictConfig, FullStateDictConfig
+
+fsdp_plugin = FullyShardedDataParallelPlugin(
+    state_dict_config=FullStateDictConfig(offload_to_cpu=True, rank0_only=False),
+    optim_state_dict_config=FullOptimStateDictConfig(offload_to_cpu=True, rank0_only=False),
+)
+
+accelerator = Accelerator(fsdp_plugin=fsdp_plugin)
+model = accelerator.prepare_model(model)
+</code></pre></div></div> <p>Use <a href="https://wandb.ai/site">weights and biases</a> to track your experiment (&amp; metrics)</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!pip install -q wandb -U
+
+import wandb, os
+wandb.login()
+
+wandb_project = "propaganda-finetune"
+if len(wandb_project) &gt; 0:
+    os.environ["WANDB_PROJECT"] = wandb_project
+</code></pre></div></div> <p>Finally, start the fine-tuning job:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import transformers
+
+project = "propaganda-finetune"
+base_model_name = "llama2-7b"
+run_name = base_model_name + "-" + project
+output_dir = "./" + run_name
+
+tokenizer.pad_token = tokenizer.eos_token
+
+trainer = transformers.Trainer(
+    model=model,
+    train_dataset=tokenized_train_dataset,
+    eval_dataset=tokenized_val_dataset,
+    
+    args=transformers.TrainingArguments(
+        output_dir=output_dir,
+        gradient_accumulation_steps=1,
+        per_device_train_batch_size = 1,     # reduce this to avoid OOM errors
+        num_train_epochs = 3, 
+        optim = "paged_adamw_32bit",         # QLoRA uses paged adamw optimizer 
+        lr_scheduler_type = "cosine", 
+        learning_rate = 0.0002, 
+        bf16 = True,                         # set to True on A100; set to false on RTX8000, V100
+        # fp16 = True,                       # set to true on RTX8000, V100
+        gradient_checkpointing=True,
+
+        logging_steps = 1,                   # log at each step
+        logging_dir="./logs", 
+
+        warmup_steps = 5, 
+        weight_decay=0.1,
+        
+        save_strategy="steps",               # save the model checkpoint every logging step
+        save_steps=3,                        # save checkpoints at every third step
+        evaluation_strategy="steps", 
+        eval_steps=3,                        # Evaluate at every third step
+        do_eval=True,                
+        report_to="wandb",           
+        run_name=f"{run_name}-{datetime.now().strftime('%Y-%m-%d-%H-%M')}" ),
+    
+    data_collator=transformers.DataCollatorForLanguageModeling(tokenizer, mlm=False),
+)
+
+model.config.use_cache = False  
+model.config.pretraining_tp = 1
+trainer_stats = trainer.train()
+</code></pre></div></div> <h3 id="inference">Inference</h3> <p>Restart your kernel and run the following cells for inference.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+
+base_model_id = "meta-llama/Llama-2-7b-hf"
+
+quant_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch.bfloat16, 
+    bnb_4bit_use_double_quant=True,
+)
+
+base_model = AutoModelForCausalLM.from_pretrained(
+    base_model_id,  # Llama 2 7b, same as before
+    quantization_config=quant_config,  # Same quantization config as before
+    device_map={"": Accelerator().local_process_index},
+    trust_remote_code=True,
+)
+
+eval_tokenizer = AutoTokenizer.from_pretrained(
+    base_model_id,
+    add_bos_token=True,
+    trust_remote_code=True,
+)
+</code></pre></div></div> <p>Load the QLoRA model from a desired checkpoint.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from peft import PeftModel
+
+ft_model = PeftModel.from_pretrained(base_model, "llama2-7b-propaganda-finetune/checkpoint-371")
+</code></pre></div></div> <p>Run inference on a test article.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eval_prompt = f"""I want you to perform a data annotation task. In your output, I want you to return a json dictionary with key as phrase and value as technique, depending on whether you think the phrases in the following text uses loaded language. 
+A phrase is "loaded language" if you perceive that it is "Using words or phrases with strong emotional implications to influence an audience". 
+I want you to respond with a json dictionary strictly having the detected phrases as keys and technique (Loaded Language) as value.
+
+### Text:
+{test_news_article}
+
+### Output:
+"""
+
+model_input = eval_tokenizer(eval_prompt, return_tensors="pt").to("cuda")
+
+with torch.no_grad():
+    output = eval_tokenizer.decode(ft_model.generate(**model_input, max_new_tokens=500,repetition_penalty=1.5, top_p=0.1,top_k=20)[0], skip_special_tokens=False)
+    new_tokens = output.replace(eval_prompt, "")
+
+</code></pre></div></div>]]></content><author><name></name></author><category term="deep_learning"/><category term="neural_networks"/><summary type="html"><![CDATA[Learn how to fine-tune LlaMa 2 for named entity recognition.]]></summary></entry><entry><title type="html">Multi-Layer Perceptron</title><link href="https://juliaannjose.github.io/blog/2020/mlp/" rel="alternate" type="text/html" title="Multi-Layer Perceptron"/><published>2020-12-20T00:00:00+00:00</published><updated>2020-12-20T00:00:00+00:00</updated><id>https://juliaannjose.github.io/blog/2020/mlp</id><content type="html" xml:base="https://juliaannjose.github.io/blog/2020/mlp/"><![CDATA[<p>This guide will help you build a 3 layer Neural Network from scratch i.e without the use of any existing python libraries.</p> <p>A Neural Network generally takes the form:</p> <ol> <li> <p>Input Layer</p> </li> <li> <p>Hidden Layer(s)</p> </li> <li> <p>Output Layer</p> </li> </ol> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/mlp-480.webp"/> <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/mlp-800.webp"/> <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/mlp-1400.webp"/> <img src="/assets/img/mlp.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> </div> <p>For this tutorial we will implement a 3 layer NN with 2-\(n_h\)-1 architecture where \(n_h\) stands for the number of hidden nodes.</p> <p>Some specifications:</p> <ul> <li> <p>Activation function used: Sigmoid</p> </li> <li> <p>Learning Rate: 0.005</p> </li> <li> <p>Number of hidden nodes, \(n_h\) = 2,4,6,8,10</p> </li> <li> <p>Error: Mean Squared Error</p> </li> </ul> <p><strong>Step 1:</strong> Load the given train and test datasets.</p> <p><strong>Step 2:</strong> Feature normalize your train and test datasets:</p> <p>For each feature \(x_i\) , your normalized feature \(y_i\) will be:</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">yi</span> <span class="o">=</span> <span class="p">(</span><span class="n">xi</span> <span class="o">-</span> <span class="n">mi</span><span class="p">)</span><span class="o">/</span><span class="n">si</span>      
 </code></pre></div></div> <p>where \(m_i\) is the mean and \(s_i\) is the standard deviation of the given feature.</p> <p>Use the same \(m_i\) and \(s_i\) values to normalize your test dataset. Remember, you only transform your test dataset with these values and not fit it using its own mi and si values.</p> <p><strong>Step 3:</strong> Split the train dataset into train and validation sets (an 80/20 split should work)</p> <p><strong>Step 4:</strong> The Multi Layer Perceptron Class and functions:</p> <p>Our sigmoid activation function and it’s derivatives are defined as follows:</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">sigmoid_derivative</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
