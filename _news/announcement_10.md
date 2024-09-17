@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Back to research and peer reviewing for ICWSM ’25, CHI ’25, NDSS ’25, and CSCW ’24 :smiley:
+Back to research & peer reviewing for ICWSM ’25, CHI ’25, NDSS ’25, & CSCW ’24 :smiley:
