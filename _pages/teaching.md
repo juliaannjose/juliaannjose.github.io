@@ -9,7 +9,7 @@ nav_order: 4
 
 SPRING 2023
 - Privacy in the Electronic Society, New York University
-    - Graduate Teaching Assistant for CSGY 9223, under Professor Rachel Greenstadt
+    - Graduate Teaching Assistant for CSGY 9223, under Professor <a href="https://engineering.nyu.edu/faculty/rachel-greenstadt">Rachel Greenstadt</a>
     - Assist with graduate-level research projects 
     - Grading research proposals and papers
 
