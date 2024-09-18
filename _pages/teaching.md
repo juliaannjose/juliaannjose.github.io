@@ -33,6 +33,6 @@ FALL 2019
 
 FALL 2019 - SPRING 2020
 - Behavioral Research Lab, Arizona State University
-    - Laboratory Assistant for Behavioral Research Lab, Department of Management and Entrepreneurship, under Professor Edward Wellman
+    - Laboratory Assistant for Behavioral Research Lab, Department of Management and Entrepreneurship, with Prof. <a href="https://search.asu.edu/profile/2133130">Edward Wellman</a>
     - Conduct lab studies
     - Developed an algorithm that categorizes open-ended survey responses
