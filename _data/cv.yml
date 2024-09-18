@@ -34,13 +34,13 @@
       institution: Atos zData
       year: 2020-2022
       description:
-        - MLOps- As part of my MLOps work, I containerized applications & deployed them using GCP services & on Kubernetes clusters. Also used KServe (for model inferencing), MLflow (model experimentation and tracking), and Kubeflow pipelines for managing ML workflows. 
-        - Entity Extraction- Used a multi-modal deep learning based architecture to extract data from unstructured pdfs.
-        - Constrained Optimization- worked on a constrained optimization problem using mixed integer programming. 
-        - Retail Video Analytics- Transfer learned a Faster R-CNN based model for object detection. Implemented a deep learning based tracker. 
-        - Conversational AI Chatbot- Built a chatbot using Rasa Machine Learning Framework and other external APIs (Google Maps API).
-        - PII Detection- Developed a Personally Identifiable Information Detection model by fine-tuning a pre-trained model for custom named entity recognition task. The application can be used to detect & mask sensitive data in text files, including files on GCP buckets. I used Apigee for API management and testing.
-        - Worked on a scheduling algorithm that matches members with medical service providers within various radii. I used multiprocessing which saved the firm 40 hours of execution time. I managed GCP compute instances, used cloud SQL for PostgreSQL, and used Plotly and Dash framework for developing an interactive web application.
+        - MLOps- Containerized and deployed applications using GCP and Kubernetes, leveraging KServe for model inferencing, MLflow for tracking, and Kubeflow for managing ML workflows.
+        - Entity Extraction- Applied a multi-modal deep learning architecture to extract data from unstructured PDFs.
+        - Constrained Optimization- Worked on a constrained optimization problem using mixed integer programming. 
+        - Retail Video Analytics- Transfer-learned a Faster R-CNN model for object detection and implemented a deep learning-based tracker. 
+        - Conversational AI Chatbot- Developed a chatbot with the Rasa Machine Learning Framework and integrated external APIs, including Google Maps API.
+        - PII Detection- Fine-tuned a pre-trained model for custom named entity recognition to detect and mask sensitive data in text files, using Apigee for API management and testing.
+        - Designed an algorithm to match medical service providers with members, utilizing multiprocessing to save 40 hours of execution time. Managed GCP compute instances, used Cloud SQL for PostgreSQL, and developed an interactive web application with Plotly and Dash.
 
     - title: Graduate Teaching Assistant
       institution: Arizona State University
@@ -53,7 +53,7 @@
       institution: Qatar Computing Research Institute
       year: 2019-2020
       description: 
-      - Worked on developing a new dimensionality reduction technique using tree-indexing.
+      - Research on developing a new dimensionality reduction technique using tree-indexing.
 
     - title: Research Intern - Software Engineering
       institution: Qatar Computing Research Institute
@@ -68,7 +68,7 @@
       institution: Qatar Computing Research Institute
       year: 2017 - 2017
       description: 
-      - Analyzed different data sets to understand urban dynamics in fast-growing cities. Worked on a platform for integrating data from disparate physical and social sensors and implemented analytical approaches to mine such data and developed two applications as a result -- One, that visualizes various social demographics of Qatar and the other, an application called QEvents which visualizes various events happening in Qatar through a map-centered dashboard.  
+      - Analyzed datasets to understand urban dynamics in rapidly growing cities. Developed a platform for integrating data from physical and social sensors, resulting in two applications- one visualizing social demographics in Qatar and another, QEvents, displaying various events in Qatar through a map-centered dashboard.
 
 
 - title: Academic Projects & Research
@@ -77,25 +77,25 @@
     - title: PhD Research
       year: 2022 - Now
       description:
-      - Currently looking at using scalable LLMs to counter propaganda and disinformation online with a focus on analyzing linguistic techniques
-      - Research on detecting AI-generated content
-      - User Research using Quantitative Methods
-      - Fast Semantic Search using high dimensional vectors, Hadoop, Spark, and Milvus (a scalable vector database)
+      - Exploring scalable LLMs to analyze linguistic techniques and patterns for combating online propaganda and disinformation.
+      - Research on detecting AI-generated content.
+      - User Research using Quantitative Methods.
+      - Implementing semantic search and RAG (Retrieval Augmented Generation) with high-dimensional vectors using Hadoop, Spark, and Milvus, a scalable vector database.
 
     - title: MS Research
       year: 2019 - 2021
       description:
-      - Continuous Glucose Monitoring & Prediction- Feature engineering of CGM time-series data. Train SVM and K-NN model to understand meal intake pattern. Forecasting of hypoglycemic events using RNN LSTM.
-      - Botnet detection on social media- CoorNet algorithm to detect coordinated inauthentic behavior.
-      - Pattern recognition- bayesian decision theory based classification use cases.
+      - Continuous Glucose Monitoring & Prediction- Engineered features from CGM time-series data, trained SVM and K-NN models to analyze meal intake patterns, and forecasted hypoglycemic events using RNN LSTM.
+      - Botnet detection on social media- Applied the CoorNet algorithm to identify coordinated inauthentic behavior.
+      - Pattern recognition- Utilized Bayesian decision theory for classification in various use cases.
 
     - title: Undergraduate Research
       year: 2015 - 2019
       description:
-      - Project 1 - Built a face authenticated and voice-controlled robot that detects objects, and recognizes emotions from facial expressions using deep learning algorithms and models, on Raspberry Pi.
-      - Project 2 -  Developed a Sign Language Recognition System (using two approaches — sensor-based and image-based)
-      - The sensor-based approach involves a glove that converts sign to speech using sensors such as flex sensors, contact sensors, accelerometers and gyroscopes, etc.
-      - The image-based approach was implemented with the help of Machine Learning and Computer Vision algorithms.
+      - Project 1 - Developed a face-authenticated and voice-controlled robot on Raspberry Pi that detects objects and recognizes emotions using deep learning algorithms.
+      - Project 2 - Created a Sign Language Recognition System with two approaches.
+      - Utilized a glove equipped with flex sensors, contact sensors, accelerometers, and gyroscopes to convert sign language into speech.
+      - Implemented machine learning and computer vision algorithms to recognize sign language from images.
 
 
 - title: Honors and Awards
