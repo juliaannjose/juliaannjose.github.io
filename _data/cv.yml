@@ -20,7 +20,7 @@
       description:
         - Developed an end-to-end AI-powered resume writing system, transforming the manual resume writing process into an automated solution.
         - Collaborated with human resume writers to understand and map the resume creation process, and gathered extensive datasets for model training.
-        - Leveraged advanced techniques such as [RoPE scaling](https://www.hopsworks.ai/dictionary/rope-scaling), flash attention, [quantized low-rank adaptation](https://arxiv.org/abs/2305.14314), and [ORPO](https://arxiv.org/abs/2403.07691) (combines instruction-tuning with preference alignnment) to train state-of-the-art open-source LLMs.
+        - Leveraged advanced techniques such as "[RoPE scaling](https://www.hopsworks.ai/dictionary/rope-scaling)", flash attention, [quantized low-rank adaptation](https://arxiv.org/abs/2305.14314), and [ORPO](https://arxiv.org/abs/2403.07691) (combines instruction-tuning with preference alignnment) to train state-of-the-art open-source LLMs.
         - Built an LLM with capabilities comparable to a professional resume writer, resulting in a significant reduction in workload for human resume writers.
         - Deployed the model on an A100 server, allowing users to generate tailored resumes.
 
