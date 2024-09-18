@@ -16,7 +16,7 @@ SPRING 2023
 SPRING 2020
 - Negotiations, Arizona State University
     - Graduate Teaching Assistant for MGT 430, with Prof. <a href="https://search.asu.edu/profile/3186197">Julia LaRosa</a>
-    Prepare the class for negotiation role-play activities
+    - Prepare the class for negotiation role-play activities
     - Monitor role-plays and provide improvement suggestions
     - Grade negotiation debrief documents and exams
     - Hold office hours
